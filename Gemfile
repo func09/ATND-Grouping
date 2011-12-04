@@ -7,7 +7,6 @@ gem 'rails', '3.1.2'
 
 gem 'sqlite3'
 
-
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -21,7 +20,7 @@ gem 'haml-rails'
 gem 'mongoid'
 gem 'bson_ext'
 gem "rails-backbone"
-gem "jammit", :git => 'git://github.com/documentcloud/jammit.git'
+# gem "jammit", :git => 'git://github.com/documentcloud/jammit.git'
 
 group :production do
   gem 'therubyracer-heroku'
