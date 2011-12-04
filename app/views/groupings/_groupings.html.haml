@@ -1,0 +1,22 @@
+%p
+  イベントの人数：
+  = @grouping.users.size
+
+%p
+  グループの数：
+  = @grouping.groupings_count
+
+%div
+  - num = 0
+  - @grouping.groups.each do |group|
+    %div
+      - num += 1
+      %h3 グループ（#{num}）
+      %ol
+        - group.users.each do |user|
+          %li
+            = image_tag user.twitter_img
+            = user.nickname
+  
+
+%button#save 確定する

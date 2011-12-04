@@ -1,2 +1,20 @@
 %h1 Groupings#new
 %p Find me in app/views/groupings/new.html.haml
+
+= form_for @grouping, :url => preview_groupings_path, :remote => true do |f|
+  %fieldset
+    %p
+      = f.label :event_url, 'イベントURL'
+      = f.text_field :event_url
+    %p
+      = f.label :event_url, 'グループ数'
+      = f.select :groupings_count, Array.new(100){|i|i+1}
+    %p
+      = f.submit 'シャッフル'
+
+#results
+
+:javascript
+   $(function(){
+     Grouping.init()
+   });

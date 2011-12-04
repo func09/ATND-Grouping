@@ -1,3 +1,8 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+class Grouping
+  @init: ()->
+    $('#new_grouping')
+      .live 'ajax:complete', (event, data, status, xhr)->
+        # console.log(data)
+        $('#results').html(data.responseText)
+
+window.Grouping = Grouping
