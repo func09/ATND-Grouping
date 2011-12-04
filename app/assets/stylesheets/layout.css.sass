@@ -137,7 +137,8 @@ blockquote, q
     width: 155px
     display: block
     float: left
-    padding: 0 0 10px 0
+    padding: 5px 0 5px 0
+    height: 50px
     .icon
       padding: 0 10px 0 0
       float: left
@@ -148,6 +149,8 @@ blockquote, q
       width: 80px
       float: left
       word-break: break-all
+      font-size: $f-m
+      line-height: $f-m * 1.4
   @media screen and (max-device-width: 480px)
     .user
       width: 92px
@@ -161,6 +164,7 @@ blockquote, q
         width: 55px
         font-size: $f-s        
         margin: -3px 0 0 0
+        line-height: $f-s * 1.4
 
 =next-button
   width: $next-button-width * 2
@@ -231,13 +235,12 @@ body
     +clearfix
   #body
     clear: both
-    padding: 10px 0 0 0
     background: $c-bg
     >div
       +clearfix
     #form
       +inner-padding
-      margin: 0 0 10px 0
+      margin: 10px 0 10px 0
       li
         display: block
         +clearfix
@@ -255,11 +258,12 @@ body
             box-shadow: none
             -webkit-box-shadow: none !important
             +radius
-            width: 525px
+            width: 505px
+            padding: 0 10px
             @media screen and (max-device-width: 480px)
               line-height: $f-s * 2
               font-size: $f-s
-              width: 210px
+              width: 190px
           select
             font-size: $f-l
             line-height: $f-l * 2
@@ -271,7 +275,9 @@ body
           color: $c-accent
           @media screen and (max-device-width: 480px)
             padding: 5px 0 0 0
-            font-size: $f-ss        
+            font-size: $f-ss
+            span
+              display: block
       .commit
         text-align: center
         input
@@ -325,7 +331,7 @@ body
           padding: 6px 56px 3px 16px
         .users
           border: $c-dark solid 6px
-          padding: 8px
+          padding: 8px 8px 0 8px
           clear: both
           background: $c-light
           +clearfix
