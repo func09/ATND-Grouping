@@ -224,6 +224,8 @@ html
   background: #f0f0f0
   font-family: sans-serif
   color: $c-text
+  @media screen and (max-device-width: 480px)
+    background: $c-bg
 
 body
   background: $c-bg
@@ -414,6 +416,9 @@ footer
   .copyright
     text-align: center
     color: $c-accent
+    font-size: $f-s
+    @media screen and (max-device-width: 480px)
+      font-size: $f-ss
     a
       color: $c-accent
       &:link,
