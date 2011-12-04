@@ -1,7 +1,6 @@
 class Group
   include Mongoid::Document
-  include Mongoid::Timestamps
   field :position, :type => Integer
-  belongs_to :grouping
-  has_many :users
+  embedded_in :grouping
+  embeds_many :users
 end

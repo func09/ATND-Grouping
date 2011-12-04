@@ -22,13 +22,28 @@ class Grouping
   field :owner_twitter_id, :type => Integer # owner_twitter_id  主催者のtwitter ID  kawanet
   field :owner_id, :type => Integer         # owner_id  主催者のID  132
   
-  has_many :groups
+  embeds_many :groups
   embeds_many :users
   
   def pull_atnd_event
     pull_atnd_event_detail
     pull_atnd_event_users
     self.save
+  end
+  
+  # usersをシャッフルしてgroupsを返す
+  def shuffle(count)
+    groups = []
+    users = self.users.dup.shuffle
+    people_count = (users.size / count)
+    count.times do
+      group = Group.new
+      people_count.times do
+        group.users << users.pop
+      end
+      groups << group
+    end
+    self.groups = groups
   end
   
   private
