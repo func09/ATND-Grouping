@@ -1,0 +1,406 @@
+// reset
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+input, select, textarea
+  :margin 0
+  :padding 0
+  :border 0
+  :outline 0
+  :font-style inherit
+  :font-family inherit
+  :vertical-align baseline
+
+input, select, textarea
+  border: none
+  background: inherit
+ 
+\:focus
+  :outline 0
+  
+body
+  :line-height 1
+  :color black
+  
+ol, ul
+  :list-styles none
+  
+table
+  :border-collapse separate
+  :border-spacing 0
+
+caption, th, td
+  :text-align left
+  :font-weight normal
+  
+blockquote:before, blockquote:after, q:before, q:after
+  :content ""
+  
+blockquote, q
+  quotes: "" ""
+
+=clearfix
+  zoom: 1
+  &:before,
+  &:after
+    display: block
+    height: 0
+    visibility: hidden
+    content: "\0020"
+  &:after
+    clear: both
+
+=center-block
+  margin: 0 auto  
+
+=inner-padding
+  padding: 15px
+  @media screen and (max-device-width: 480px)
+    padding: 8px
+=radius
+  border-radius: 4px
+  -webkit-border-radius: 4px
+  -moz-border-radius: 4px
+  -o-border-radius: 4px
+=button_radius
+  border-radius: 8px
+  -webkit-border-radius: 8px
+  -moz-border-radius: 8px
+  -o-border-radius: 8px
+=header-height
+  height: $header-height
+  @media screen and (max-device-width: 480px)
+    height: $mobile-header-height
+=form-label
+  color: $c-light
+  font-size: $f-l
+  line-height: $f-l * 2
+  width: 90px
+  float: left
+  clear: both
+  margin: 0 30px 0 0
+  @media screen and (max-device-width: 480px)
+    font-size: $f-m
+    line-height: $f-m * 2
+    margin: 0 20px 0 0
+    width: 58px
+  label
+    display: block
+    width: auto
+    line-height: $f-l * 2
+    height: $f-l * 2
+    background: $c-accent
+    padding: 0 0 0 10px                    
+    &::after
+      position: relative
+      margin-top: -18px
+      margin-right: -4px
+      margin-left: auto
+      display: block
+      height: $f-l
+      width: 7px
+      content: ' '
+      -webkit-transform: skew(-25deg)
+      background: $c-accent
+    &::before
+      float: right
+      margin-right: -4px
+      display: block
+      height: $f-l 
+      width: 7px
+      content: ' '
+      -webkit-transform: skew(25deg)
+      background: $c-accent
+    @media screen and (max-device-width: 480px)
+      line-height: $f-m * 2
+      height: $f-m * 2
+      padding: 0 0 0 5px
+      &::after
+        margin-top: -14px
+        margin-right: -4px
+        height: $f-m
+        width: 7px
+      &::before
+        float: right
+        margin-right: -4px
+        display: block
+        height: $f-m 
+        width: 7px
+=user
+  .user
+    width: 155px
+    display: block
+    float: left
+    padding: 0 0 10px 0
+    .icon
+      padding: 0 10px 0 0
+      float: left
+      img
+        width: 40px
+        height: 40px
+    .name
+      width: 80px
+      float: left
+      word-break: break-all
+  @media screen and (max-device-width: 480px)
+    .user
+      width: 92px
+      .icon
+        padding: 0 5px 0 0
+        float: left
+        img
+          width: 25px
+          height: 25px
+      .name
+        width: 55px
+        font-size: $f-s        
+        margin: -3px 0 0 0
+
+=next-button
+  width: $next-button-width * 2
+  @media screen and (max-device-width: 480px)
+    width: $mobile-next-button-width * 2
+  li
+    display: inline
+  a
+    width: $next-button-width
+    display: block
+    float: left
+    text-align: center
+    line-height: 40px
+    color: $c-light
+    text-decoration: none
+    font-size: $f-ll
+    @media screen and (max-device-width: 480px)
+      width: $mobile-next-button-width
+  .shuffle
+    a
+      background: $c-dark
+  .result
+    a
+      background: $c-accent
+
+
+
+// colors
+$c-bg: #dcdcd9
+$c-light: #fff
+$c-accent: #c41616
+$c-dark: #909090
+$c-text: #444
+
+// font-size
+$f-ss: 10px
+$f-s: 12px
+$f-m: 14px
+$f-l: 16px
+$f-ll: 18px
+$f-lll: 28px
+$f-exl: 40px
+
+// block
+$pc-width: 680px
+$header-height: 95px
+$mobile-header-height: 50px
+$next-button-width: 200px
+$mobile-next-button-width: 100px
+
+
+
+
+// design
+
+html
+  background: #f0f0f0
+  font-family: sans-serif
+  color: $c-text
+
+body
+  background: $c-bg
+  max-width: $pc-width
+  font-size: $f-m
+  +center-block
+  +clearfix
+  >div
+    +clearfix
+  #body
+    clear: both
+    padding: 10px 0 0 0
+    background: $c-bg
+    >div
+      +clearfix
+    #form
+      +inner-padding
+      margin: 0 0 10px 0
+      li
+        display: block
+        +clearfix
+        margin: 0 0 25px 0
+        @media screen and (max-device-width: 480px)
+          margin: 0 0 18px 0
+        .label
+          +form-label
+        .input
+          float: left
+          input
+            background: $c-light
+            line-height: $f-l * 2
+            font-size: $f-l
+            box-shadow: none
+            -webkit-box-shadow: none !important
+            +radius
+            width: 525px
+            @media screen and (max-device-width: 480px)
+              line-height: $f-s * 2
+              font-size: $f-s
+              width: 210px
+          select
+            font-size: $f-l
+            line-height: $f-l * 2
+            background: $c-light
+        .note
+          font-size: $f-s
+          clear: both
+          padding: 10px 0 0 0
+          color: $c-accent
+          @media screen and (max-device-width: 480px)
+            padding: 5px 0 0 0
+            font-size: $f-ss        
+      .commit
+        text-align: center
+        input
+          display: block
+          margin: 0 auto
+          border: none
+          background: $c-accent none
+          font-size: $f-l
+          line-height: $f-l * 2.4
+          cursor: pointer
+          width: 200px
+          color: $c-light
+          +button_radius
+          @media screen and (max-device-width: 480px)
+            background: -webkit-gradient(linear, left bottom, left top, color-stop(0, rgb(196,22,22)))
+            font-size: $f-m
+            line-height: $f-m * 2
+            width: 100px
+            
+        
+    h1
+      background: $c-dark
+      color: $c-light
+      font-size: $f-l
+      line-height: $f-l * 1.2
+      +inner-padding
+      @media screen and (max-device-width: 480px)
+        font-size: $f-m
+        line-height: $f-m * 1.3
+    .acceoted_users
+      display: block
+      padding: 15px 15px 5px 15px 
+      color: $c-accent
+      font-size: $f-s
+      .number
+        font-weight: bold
+        font-size: $f-ll
+        margin: 0 5px
+    #groupings
+      +inner-padding
+      >div
+        +clearfix     
+      .grouping
+        margin: 0 0 20px 0
+        +clearfix
+        h2
+          background: $c-dark
+          color: $c-light
+          float: left
+          font-size: $f-l
+          padding: 6px 56px 3px 16px
+        .users
+          border: $c-dark solid 6px
+          padding: 8px
+          clear: both
+          background: $c-light
+          +clearfix
+          +user
+    #users
+      +inner-padding
+      ul
+        background: $c-light
+        border: $c-dark solid 6px
+        padding: 8px
+        +clearfix
+        +user
+    .next
+      +center-block
+      +next-button
+              
+        
+
+header
+  background: $c-light
+  +clearfix
+  h1
+    font-weight: normal
+    a
+      font-size: $f-exl
+      display: block
+      float: left
+      padding: 25px 15px
+      font-family: 'Righteous', cursive
+      text-decoration: none
+      line-height: $f-exl * 1.5
+      span
+        display: block
+        float: left
+        color: $c-accent
+      .atnd
+        color: $c-light
+        background: $c-accent
+        padding: 0 $f-exl * 0.2
+        margin: 0 $f-exl * 0.3 0 0
+    @media screen and (max-device-width: 480px)
+      a
+        line-height: $f-lll * 1.5
+        font-size: $f-lll
+        padding: 10px 8px
+        .atnd
+          padding: 0 $f-lll * 0.2
+          margin: 0 $f-lll * 0.3 0 0
+        
+  .usage
+    padding: 10px 15px
+    @media screen and (max-device-width: 480px)
+      padding: 10px 8px
+    a
+      display: block
+      float: right
+      font-size: $f-l
+      line-height: $mobile-header-height - 20px + 2px
+      height: $mobile-header-height - 20px
+      width:  $mobile-header-height - 20px
+      text-align: center
+      border-radius: ($mobile-header-height - 20px) / 2
+      -webkit-border-radius: ($mobile-header-height - 20px) / 2
+      -moz-border-radius: ($mobile-header-height - 20px) / 2
+      -o-border-radius: ($mobile-header-height - 20px) / 2
+      background: $c-dark
+      color: $c-light
+      text-decoration: none
+      font-weight: bold
+      @media screen and (max-device-width: 480px)
+        line-height: $mobile-header-height - 20px
+
+
+footer
+  padding-top: 45px
+  padding-bottom: 45px
+  .copyright
+    text-align: center
