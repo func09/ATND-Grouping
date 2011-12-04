@@ -19,6 +19,7 @@ end
 gem 'jquery-rails'
 gem 'haml-rails'
 gem 'mongoid'
+gem "rails-backbone"
 
 group :production do
   gem 'therubyracer-heroku'
