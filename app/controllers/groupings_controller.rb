@@ -43,6 +43,7 @@ class GroupingsController < ApplicationController
   end
   
   def show
+    @grouping = Grouping.find(params[:id])
   end
 
 end
