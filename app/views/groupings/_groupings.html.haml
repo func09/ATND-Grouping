@@ -1,23 +1,23 @@
-<p class="acceoted_users">合計<span class="number">100</span> 人 / <span class="number">10</span>グループ</p>
-
-
-%p.cceoted_users
+%p.acceoted_users
   イベントの人数：
   %span.number= @grouping.users.size
+  人 / 
   グループの数：
   %span.number= @grouping.groupings_count
 
-%div
+#groupings
   - num = 0
   - @grouping.groups.each do |group|
-    %div
+    .grouping
       - num += 1
-      %h3 グループ（#{num}）
-      %ol
+      %h2 グループ（#{num}）
+      %ul.users
         - group.users.each do |user|
-          %li
-            = image_tag user.twitter_img
-            = user.nickname
+          %li.user
+            %p.icon= image_tag user.twitter_img
+            %p.name= user.nickname
   
-
-%button#save 確定する
+.next
+  %ul
+    %li.shuffle= link_to 'やり直す', ''
+    %li.result= link_to '確定', ''
