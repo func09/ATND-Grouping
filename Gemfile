@@ -19,6 +19,7 @@ end
 gem 'jquery-rails'
 gem 'haml-rails'
 gem 'mongoid'
+gem 'bson_ext'
 gem "rails-backbone"
 gem "jammit", :git => 'git://github.com/documentcloud/jammit.git'
 
