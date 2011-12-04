@@ -1,0 +1,11 @@
+development:
+  host: localhost
+  database: atnd_grouping_development
+
+test:
+  host: localhost
+  database: atnd_grouping_test
+
+# set these environment variables on your prod server
+production:
+  uri: <%= ENV['MONGOHQ_URL'] %>
