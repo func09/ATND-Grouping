@@ -22,19 +22,25 @@ class Grouping
   field :owner_twitter_id, :type => Integer # owner_twitter_id  主催者のtwitter ID  kawanet
   field :owner_id, :type => Integer         # owner_id  主催者のID  132
   
+  field :groupings_count, :type => Integer
+  
   embeds_many :groups
   embeds_many :users
   
+  after_initialize :set_event_id
+  
   def pull_atnd_event
-    pull_atnd_event_detail
-    pull_atnd_event_users
-    self.save
+    pull_atnd_event_detail(self.event_id)
+    pull_atnd_event_users(self.event_id)
   end
   
   # usersをシャッフルしてgroupsを返す
-  def shuffle(count)
+  def shuffle
+    count = self.groupings_count
     groups = []
     users = self.users.dup.shuffle
+    p users.size
+    p self.groupings_count
     people_count = (users.size / count)
     count.times do
       group = Group.new
@@ -48,8 +54,14 @@ class Grouping
   
   private
     
-    def pull_atnd_event_users
-      res = HTTParty.get("http://api.atnd.org/events/users/?event_id=#{self.event_id}&format=json")
+    def set_event_id
+      if self.event_url.present? && self.event_id.blank? && self.event_url.match(%r{http://atnd.org/events/([0-9]+)})
+        self.event_id = $1.to_i
+      end
+    end
+  
+    def pull_atnd_event_users(event_id)
+      res = HTTParty.get("http://api.atnd.org/events/users/?event_id=#{event_id}&format=json")
       if res.code == 200
         parsed_response = res.parsed_response.with_indifferent_access
         event = parsed_response[:events].first
@@ -64,8 +76,8 @@ class Grouping
       end
     end
     
-    def pull_atnd_event_detail
-      res = HTTParty.get("http://api.atnd.org/events/?event_id=#{self.event_id}&format=json")
+    def pull_atnd_event_detail(event_id)
+      res = HTTParty.get("http://api.atnd.org/events/?event_id=#{event_id}&format=json")
       if res.code == 200
         parsed_response = res.parsed_response.with_indifferent_access
         event = parsed_response[:events].first

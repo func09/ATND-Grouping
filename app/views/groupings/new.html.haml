@@ -1,11 +1,24 @@
-%form
+= form_for @grouping, :url => preview_groupings_path, :remote => true do |f|
   #form
-    %ol
-      %li
-        %p.label
-          %label URL
-        %p.input
-    %p.note ああああああああああああああああああああああ
-    %p.label
-    %p.input
-    %p.commit
+    %fieldset
+      %ol
+        %li
+          %p.label
+            = f.label :event_url, 'URL'
+          %p.input
+            = f.text_field :event_url
+          %p.note ああああああああああああああああああああああ
+        %li
+          %p.label
+            = f.label :event_url, 'Groups'
+          %p.input
+            = f.select :groupings_count, Array.new(100){|i|i+1}
+      %p.commit
+        = f.submit 'シャッフル'
+
+#results
+
+:javascript
+   $(function(){
+     Grouping.init()
+   });
