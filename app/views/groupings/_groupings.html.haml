@@ -17,8 +17,13 @@
       %ul.users
         - group.users.each do |user|
           %li.user
-            %p.icon= image_tag user.twitter_img
-            %p.name= user.nickname
+            %p.icon
+              - if user.twitter_img.present?
+                = image_tag user.twitter_img
+              - else
+                = image_tag 'no_icon.gif'
+                
+            %p.name= truncate user.nickname, :length => 15
   
 %script#results-json(type='text/json')
   = raw @json
