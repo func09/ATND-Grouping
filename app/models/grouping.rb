@@ -39,8 +39,6 @@ class Grouping
     count = self.groupings_count
     groups = []
     users = self.users.dup.shuffle
-    p users.size
-    p self.groupings_count
     people_count = (users.size / count)
     count.times do
       group = Group.new

@@ -19,5 +19,7 @@
             = image_tag user.twitter_img
             = user.nickname
   
-
+%script#results-json(type='text/json')
+  = raw @json
 %button#save 確定する
+
