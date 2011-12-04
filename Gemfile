@@ -20,6 +20,7 @@ gem 'haml-rails'
 gem 'mongoid'
 gem 'bson_ext'
 gem "rails-backbone"
+gem "httparty"
 # gem "jammit", :git => 'git://github.com/documentcloud/jammit.git'
 
 group :production do

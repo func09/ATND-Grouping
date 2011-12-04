@@ -23,5 +23,39 @@ class Grouping
   field :owner_id, :type => Integer         # owner_id  主催者のID  132
   
   has_many :groups
+  embeds_many :users
+  
+  def pull_atnd_event
+    pull_atnd_event_detail
+    pull_atnd_event_users
+    self.save
+  end
+  
+  private
+    
+    def pull_atnd_event_users
+      res = HTTParty.get("http://api.atnd.org/events/users/?event_id=#{self.event_id}&format=json")
+      if res.code == 200
+        parsed_response = res.parsed_response.with_indifferent_access
+        event = parsed_response[:events].first
+        users = event[:users]
+        self.users = []
+        users.each do |user|
+          if user[:status] == 1
+            u = User.new(user)
+            self.users << u
+          end
+        end
+      end
+    end
+    
+    def pull_atnd_event_detail
+      res = HTTParty.get("http://api.atnd.org/events/?event_id=#{self.event_id}&format=json")
+      if res.code == 200
+        parsed_response = res.parsed_response.with_indifferent_access
+        event = parsed_response[:events].first
+        self.attributes = event
+      end
+    end
   
 end
