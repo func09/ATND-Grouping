@@ -1,10 +1,11 @@
-%p
-  イベントの人数：
-  = @grouping.users.size
+<p class="acceoted_users">合計<span class="number">100</span> 人 / <span class="number">10</span>グループ</p>
 
-%p
+
+%p.cceoted_users
+  イベントの人数：
+  %span.number= @grouping.users.size
   グループの数：
-  = @grouping.groupings_count
+  %span.number= @grouping.groupings_count
 
 %div
   - num = 0
