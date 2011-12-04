@@ -17,6 +17,12 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'haml-rails'
+gem 'mongoid'
+
+group :production do
+  gem 'therubyracer-heroku'
+end
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
@@ -33,4 +39,5 @@ gem 'jquery-rails'
 group :test do
   # Pretty printed test output
   gem 'turn', '0.8.2', :require => false
+  gem 'rspec'
 end
