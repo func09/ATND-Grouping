@@ -36,7 +36,6 @@ class GroupingsController < ApplicationController
   
   def create
     @grouping = Grouping.new params[:grouping]
-    p @grouping.groups
     if @grouping.save
       render :json => @grouping
     end

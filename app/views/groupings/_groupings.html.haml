@@ -2,6 +2,20 @@
   イベント名：
   = @grouping.title
 
+%dl
+  %dt Event Title
+  %dd= @grouping.title
+  %dt Event Catch
+  %dd= @grouping.catch
+  %dt Event URL
+  %dd= link_to @grouping.event_url, @grouping.event_url
+  %dt Event Address
+  %dd= @grouping.address
+  %dt Event Date
+  %dd= @grouping.started_at.strftime("%Y/%m/%d %H:%M")
+  %dt Event Owner
+  %dd= @grouping.owner_nickname
+
 %p.acceoted_users
   イベントの人数：
   %span.number= @grouping.users.size
