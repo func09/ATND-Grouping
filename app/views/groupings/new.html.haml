@@ -16,7 +16,7 @@
           %p.label
             = f.label :event_url, 'Groups'
           %p.input
-            = f.select :groupings_count, Array.new(100){|i|i+1}
+            = f.select :groupings_count, (2..100).to_a, :include_blank => 'グループ数を選択'
       %p.commit
         = f.submit 'シャッフル', :onclick => "location.href='#result'"
 
