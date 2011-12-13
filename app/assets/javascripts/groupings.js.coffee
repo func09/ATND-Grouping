@@ -1,5 +1,12 @@
 class Grouping
   @init: ()->
+    
+    $('#loading')
+      .ajaxStart ()->
+        $(this).fadeIn()
+      .ajaxStop ()->
+        $(this).fadeOut()
+    
     $('#new_grouping')
       .live 'ajax:complete', (event, data, status, xhr)->
         $('#results').html(data.responseText)
