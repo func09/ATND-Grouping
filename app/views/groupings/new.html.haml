@@ -1,4 +1,4 @@
-%h1 ATNDイベントに参加している人達をランダムにグループ別けするためのツールです
+%h1.description ATNDイベントに参加している人達をランダムにグループ別けするためのツールです
 = form_for @grouping, :url => preview_groupings_path, :remote => true do |f|
   #form
     %fieldset
@@ -9,7 +9,7 @@
           %p.input
             = f.text_field :event_url
           %p.note
-            ここにATNDのイベントのURLをコピペしてください
+            ATNDのURLをコピペ
             %span
               （例：http://atnd.org/events/22605）
         %li
@@ -18,7 +18,7 @@
           %p.input
             = f.select :groupings_count, Array.new(100){|i|i+1}
       %p.commit
-        = f.submit 'シャッフル'
+        = f.submit 'シャッフル', :onclick => "location.href='#result'"
 
 #results
 

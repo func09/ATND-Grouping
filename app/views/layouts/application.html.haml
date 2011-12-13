@@ -10,13 +10,19 @@
     = javascript_include_tag "facebox.js"
     %meta(name="viewport" content="width=device-width, height=device-height, initial-scale=1.0")
     = csrf_meta_tags
+    :javascript
+      jQuery(document).ready(function($) {
+        $('a[rel*=facebox]').facebox({
+          loadingImage : 'images/loading.gif',
+          closeImage   : 'images/closelabel.png'
+        })
+      })
   %body
     %header
       %h1
         = link_to root_path do
           %span.atnd ATND
-          %span.groups GROUPS
-                
+          %span.groups GROUPING
       %p.usage
         %a{:href => "#usage", :rel => "facebox"} ?
     #body

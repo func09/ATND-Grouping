@@ -1,30 +1,4 @@
-%h1
-  イベント名：
-  = @grouping.title
-
-%p.acceoted_users
-  イベントの人数：
-  %span.number= @grouping.users.size
-  人 / 
-  グループの数：
-  %span.number= @grouping.groupings_count
-
-#groupings
-  - num = 0
-  - @grouping.groups.each do |group|
-    .grouping
-      - num += 1
-      %h2 グループ（#{num}）
-      %ul.users
-        - group.users.each do |user|
-          %li.user
-            %p.icon
-              - if user.twitter_img.present?
-                = image_tag user.twitter_img
-              - else
-                = image_tag 'no_icon.gif'
-                
-            %p.name= truncate user.nickname, :length => 15
+= render :partial => 'groupings'
   
 %script#results-json(type='text/json')
   = raw @json
