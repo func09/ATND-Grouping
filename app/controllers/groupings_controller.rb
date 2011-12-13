@@ -2,7 +2,10 @@ class GroupingsController < ApplicationController
   respond_to :html, :json
   def new
     @grouping = Grouping.new
-    @grouping.event_url = 'http://atnd.org/events/17223'
+    @grouping.event_url = params[:event_url].present? ? params[:event_url] : 'http://atnd.org/events/17223'
+    # unless params[:event_url]
+    #   @grouping.event_url = 'http://atnd.org/events/17223'
+    
   end
   
   def preview

@@ -43,7 +43,13 @@
 %script#results-json(type='text/json')
   = raw @json
 
-.next
-  %ul
-    %li.shuffle= link_to 'やり直す', ''
-    %li.result= link_to '確定', ''
+- case action_name
+- when 'preview'
+  .next
+    %ul
+      %li.shuffle= link_to 'やり直す', ''
+      %li.result= link_to '確定', ''
+- when 'show'
+  .next
+    %ul
+      %li.result= link_to '新しくシャッフルする', root_path(:event_url => @grouping.event_url)
