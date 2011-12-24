@@ -14,6 +14,8 @@
     -moz-box-shadow: 0 0 18px rgba(0, 0, 0, 0.4)
     box-shadow: 0 0 18px rgba(0, 0, 0, 0.4)    
     width: 500px
+    @media screen and (max-device-width: 480px)
+      width: 300px
   .content
     display: table
     padding: 25px
@@ -23,6 +25,11 @@
     border-radius: 4px
     width: 450px
     color: #d3d3c7
+    @media screen and (max-device-width: 480px)
+      width: 300px
+      padding: 12px
+      li
+        font-size: 12px
     > p
       font-size: 14px
       margin: 26px 0
@@ -31,12 +38,18 @@
         margin-top: 0
       &:last-child
         margin-bottom: 0
+      @media screen and (max-device-width: 480px)
+        font-size: 12px
     h1
       margin: 0 0 10px 0
       font-size: 24px
+      @media screen and (max-device-width: 480px)
+        font-size: 18px
     h2
       margin: 0 0 20px 0
       font-size: 18px
+      @media screen and (max-device-width: 480px)
+        font-size: 14px
     ul,ol
       list-style-position: outside
       margin: 0 0 20px 20px

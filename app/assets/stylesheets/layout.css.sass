@@ -1,26 +1,12 @@
 @import reset.css.sass
 @import mixins.css.sass
 
-// colors
-$c-bg: #dcdcd9
-$c-light: #d3d3c7
-$c-accent: #c41616
-$c-dark: #909090
-$c-text: #666
 
-// font-size
-$f-ss: 10px
-$f-s: 12px
-$f-m: 14px
-$f-l: 16px
-$f-ll: 18px
-$f-lll: 28px
-$f-exl: 40px
 
 // block
 $pc-width: 680px
 $header-height: 95px
-$mobile-header-height: 50px
+$mobile-header-height: 40px
 $next-button-width: 200px
 $mobile-next-button-width: 120px
 
@@ -29,14 +15,11 @@ $mobile-next-button-width: 120px
 html
   background: #444
   font-family: sans-serif
-  @media screen and (max-device-width: 480px)
-    background: $c-bg
-
 body
   background: url(/assets/body.gif),#4f4f4b
   max-width: $pc-width
-  font-size: $f-m
-  color: $c-text
+  font-size: 14px
+  color: #666
   +center-block
   +clearfix
   min-height: 800px
@@ -44,6 +27,7 @@ body
     +clearfix
   #body
     clear: both
+    position: relative
     >div
       +clearfix
     h1.description
@@ -51,7 +35,7 @@ body
       font-size: 18px
       text-align: center
       font-weight: normal
-      +text-shadow(#000 0 1px 1px)
+      +text-shadow(#30302b 0 1px 0)
       @media screen and (max-device-width: 480px)
         font-size: 13px
         font-weight: bold
@@ -62,6 +46,8 @@ body
         display: block
         +clearfix
         margin: 0 0 25px 0
+        @media screen and (max-device-width: 480px)
+          margin: 0 0 18px 0
         p.inner
           background: #d3d3c7
           +border_radius(4px)
@@ -88,45 +74,47 @@ body
             float: left
             input
               background: transparent
-              line-height: $f-ll * 1.6
-              font-size: $f-l
+              line-height: 18px * 1.6
+              font-size: 16px
               width: 480px
-              color: $c-text
+              color: #666
               +border_radius(4px)
               font-weight: bold              
               +text-shadow(#e9e9da 0 1px 0)
               @media screen and (max-device-width: 480px)
-                line-height: $f-m * 2
-                font-size: $f-m
+                line-height: 14px * 2
+                font-size: 14px
                 width: 200px 
               &:focus
                 color: #9b1828
             select
-              font-size: $f-l
-              line-height: $f-l * 2
+              font-size: 16px
+              line-height: 16px * 2
               background: transparent
               background-image: none
               +gradient("null",#d3d3c7,#d3d3c7)
               display: block
               margin: 2px 0 0 0
               padding: 0 4px
-              color: $c-text
-              font-size: $f-l
+              color: #666
+              font-size: 16px
               &:focus
                 background: transparent
               @media screen and (max-device-width: 480px)
-                font-size: $f-m
-                line-height: $f-m * 2
-                width: 200px
+                font-size: 14px
+                line-height: 14px * 2
+                width: 220px
                 margin: 0
                 font-weight: bold
+                background: url(/assets/select.png) no-repeat 124px center
+                -webkit-background-size: 12px 9px
         .note
-          font-size: $f-s
+          font-size: 12px
           clear: both
           padding: 4px 0 0 0
-          color: $c-dark
+          color: #909090
           @media screen and (max-device-width: 480px)
-            font-size: $f-ss
+            font-size: 10px
       li.url
         p.inner
           .label
@@ -143,61 +131,70 @@ body
             
       .commit
         text-align: center
-        @media screen and (max-device-width: 480px)
-          padding: 15px 0 0 0
         input
           +green_button
           margin: 0 auto
           border: none
-          font-size: $f-l
-          line-height: $f-l * 2.4
+          font-size: 16px
+          line-height: 16px * 2.4
           cursor: pointer
           width: 200px
-          color: $c-light
+          color: #d3d3c7
           font-weight: bold
           cursor: pointer
           @media screen and (max-device-width: 480px)
-            font-size: $f-l
-            line-height: $f-l * 2
+            font-size: 16px
+            line-height: 16px * 2
             width: 150px
 
     .acceoted_users
       display: block
-      padding: 15px 15px 5px 15px 
+      padding: 15px 25px 5px 25px 
       color: #d3d3c7
-      font-size: $f-s
+      font-size: 12px
       +text-shadow(#3a3a35 0 -1px 0)
+      @media screen and (max-device-width: 480px)
+        padding: 10px 8px 0 8px
+        font-size: 10px
       .number
         font-weight: bold
-        font-size: $f-ll
+        font-size: 18px
         margin: 0 5px
+        @media screen and (max-device-width: 480px)
+          font-size: 16px
     #groupings
       padding: 25px 25px 0 25px
+      @media screen and (max-device-width: 480px)
+        padding: 15px 8px 0 8px
       >div
         +clearfix     
       .grouping
         margin: 0 0 36px 0
         +clearfix
+        @media screen and (max-device-width: 480px)
+          margin: 0 0 26px 0
         h2
           +gradient("null",#363635,#20201e)
-          color: $c-light
+          color: #d3d3c7
           float: left
-          font-size: $f-l
-          line-height: $f-l * 2
+          font-size: 16px
+          line-height: 16px * 2
           padding: 0 16px 0 12px
           margin: 0 0 6px 0
           +border_radius(4px)
           +box-shadow(inset #222 0 1px 2px, #6c6c68 0 1px 1px)
           +text-shadow(#000 0 -1px 0)
           @media screen and (max-device-width: 480px)
-            font-size: $f-m
-            line-height: $f-m * 1.8
-            padding: 0 14px
+            font-size: 12px
+            line-height: 14px * 1.8
+            padding: 0 14px 0 10px
           &:before
             content: "▼"
             font-size: 10px
             vertical-align: middle
             margin: 0 6px 0 0
+            @media screen and (max-device-width: 480px)
+              font-size: 8px
         .users
           padding: 12px 4px 0 12px
           clear: both
@@ -228,63 +225,100 @@ body
     +clearfix
     color: #d3d3c7
     border-bottom: #6c6c68 solid 1px
+    font-size: 12px
+    @media screen and (max-device-width: 480px)
+      padding: 12px 8px
     h1
       font-size: 24px
       line-height: 1.4
       +text-shadow(#320208 0 1px 0)
       margin: 0 0 14px 0
+      @media screen and (max-device-width: 480px)
+        font-size: 20px
+        margin: 0 0 12px 0
       span.atnd_url
         display: inline-block
         vertical-align: middle
+        @media screen and (max-device-width: 480px)
+          padding: 0 0 0 5px
         a
           +green_button
           font-size: 12px
           line-height: 22px
           padding: 0 10px
+          @media screen and (max-device-width: 480px)
+            font-size: 10px
+            line-height: 16px
     h2
       font-size: 12px
       line-height: 1.4
       font-weight: normal
       margin: 0 0 8px 0
+      @media screen and (max-device-width: 480px)
+        font-size: 12px
     li
       line-height: 1.4
       font-size: 12px
-      margin: 0 6px 0 0
+      margin: 0 0 6px 0
       display: inline
+      @media screen and (max-device-width: 480px)
+        display: block
+        font-size: 10px
+        line-height: 1.3
+        margin: 0 0 4px 0
     .main
       width: 520px
       float: left
       padding: 12px 0
+      @media screen and (max-device-width: 480px)
+        width: 100%
+        float: none
+        padding: 0
     .sub
       width: 83px
       float: right
+      @media screen and (max-device-width: 480px)
+        width: 100%
+        float: none
       p.owner
         text-align: center
         display: block
         margin: 0
         background: url(/assets/owner.png) center bottom
         padding: 0 2px 30px 2px
+        @media screen and (max-device-width: 480px)
+          text-align: left
+          background: none
+          padding: 0
+          line-height: 1.3
+          font-size: 10px
         span
           display: block
           font-size: 12px
+          @media screen and (max-device-width: 480px)
+            display: inline
+            font-size: 10px
           &:before
             content: ""
             display: block
             height: 4px
             +gradient("null",#3f0c11,#5d1d24)
             margin: 0 0 6px 0
+            @media screen and (max-device-width: 480px)
+              content: none
         a
           display: block
           color: #d3d3c7
           font-size: 10px
+          @media screen and (max-device-width: 480px)
+            display: inline
+          +text-decoration
           &:link,
           &:visited
-            text-decoration: none
             img
               +box-shadow(none)
           &:hover,
           &:active
-            text-decoration: underline
             img
               +box-shadow(#e45766 0 0 5px)
           img
@@ -292,10 +326,15 @@ body
             height: 22px
             display: block
             margin: 8px auto 4px auto
+            @media screen and (max-device-width: 480px)
+              display: none
+              margin: 0
             
 header
   +clearfix
   position: relative
+  @media screen and (max-device-width: 480px)
+    padding: 0 0 10px 0
   h1
     a
       display: block
@@ -312,9 +351,10 @@ header
       &:active
         opacity: 0.8
       @media screen and (max-device-width: 480px)
+        background: url(/assets/h1.png) no-repeat center bottom
         -webkit-background-size: 162px 64px
         width: 162px
-        height: 64px
+        height: 40px
         
   .usage
     position: absolute
@@ -327,19 +367,24 @@ header
     a
       display: block
       float: right
-      font-size: $f-l
-      line-height: $mobile-header-height - 20px + 2px
-      height: $mobile-header-height - 20px
-      width:  $mobile-header-height - 20px
-      text-align: center
-      +border_radius(($mobile-header-height - 20px) / 2)
-      background: $c-dark
-      color: $c-light
+      font-size: 16px
+      background: #2c2c27
+      color: #d3d3c7
       text-decoration: none
       font-weight: bold
-      +box-shadow(inset #000 0 0 1px)
+      width: 32px
+      height: 32px
+      line-height: 32px
+      text-align: center
+      +text-shadow(#000 0 1px o)
+      +border_radius(16px)
+      +box-shadow(inset #000 0 1px 1px, #6c6c68 0 1px 1px)
       @media screen and (max-device-width: 480px)
-        line-height: $mobile-header-height - 20px
+        font-size: 12px
+        width: 24px
+        height: 24px
+        line-height: 24px
+        +border_radius(12px)
 
 .tweet
   text-align: center
@@ -347,12 +392,16 @@ header
   margin: 0 0 20px 0
 .retry
   padding: 0 25px 0 0
+  @media screen and (max-device-width: 480px)
+    padding: 0 8px 0 0
   a
     +green_button
     font-size: 12px
     line-height: 24px
     padding: 0 10px
     float: right
+    @media screen and (max-device-width: 480px)
+      font-size: 10px
 
 footer
   padding-top: 45px
@@ -360,15 +409,45 @@ footer
   .copyright
     text-align: center
     color: #d3d3c7
-    font-size: $f-s
+    font-size: 12px
     @media screen and (max-device-width: 480px)
-      font-size: $f-ss
+      font-size: 10px
     a
       color: #d3d3c7
-      &:link,
-      &:visited
-        text-decoration: none
-      &:hover,
-      &:active
-        text-decoration: underline
+      +text-decoration
+#loading
+  z-index: 1000
+  position: absolute
+  top: 60px
+  left: 80px
+  display: none
+  width: 520px
+  text-align: center
+  line-height: 100%
+  color: #fff  
+  background: #000
+  padding: 60px 0
+  opacity: 0.7
+  +border_radius(12px)
+  @media screen and (max-device-width: 480px)
+    width: 280px
+    left: 20px
+    padding: 40px 0
+  span
+    display: block
+    background: url(/assets/loading.gif) left center no-repeat
+    height: 48px
+    line-height: 48px
+    padding: 0 0 0 48px
+    width: 170px
+    margin: 0 auto
+    text-align: center
+    font-size: 24px
+    @media screen and (max-device-width: 480px)
+      height: 24px
+      line-height: 24px
+      padding: 0 0 0 24px
+      font-size: 14px
+      -webkit-background-size: 24px 24px
+      width: 100px
       
