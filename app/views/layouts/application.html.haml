@@ -3,8 +3,6 @@
   %head
     %title AtndGrouping
     = stylesheet_link_tag    "application"
-    = stylesheet_link_tag    "facebox"
-    = stylesheet_link_tag  "http://fonts.googleapis.com/css?family=Righteous"
     = javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"
     = javascript_include_tag "application"
     = javascript_include_tag "facebox.js"
@@ -13,8 +11,8 @@
     :javascript
       jQuery(document).ready(function($) {
         $('a[rel*=facebox]').facebox({
-          loadingImage : 'images/loading.gif',
-          closeImage   : 'images/closelabel.png'
+          loadingImage : '/assets/loading.gif',
+          closeImage   : '/assets/closelabel.png'
         })
       })
   %body
@@ -28,8 +26,25 @@
     #body
       = yield
     #usage{:style => "display:none;"}
+      %h1
+        ATND GROUPING
       %p
-        使い方ああああああああああああああ 
+        ATNDイベント参加者をランダムにグループ別けするツールです。
+      %h2
+        例えばこんなときに便利
+      %ul
+        %li いくつかのテーブルが用意されている会場での席決め。
+        %li グループで行うハンズオンセミナーなどのグループ分け。
+        %li 顔見知り同士が固まらない、一人ぼっちの人ができないなど、参加者への配慮。
+      %h2
+        使い方
+      %ol
+        %li 「URL」にATNDで立てたイベントのURLを貼りつけ。
+        %li 「GROUPS」でグループ数を選択。
+        %li シャッフルボタンをクリック。
+        %li 表示されたグループ分けでよかったら「確定」をクリック。やり直す場合は「やり直す」をクリック。
+        %li 「確定」をクリックして表示されたページの最下部にあるTweetボタンからそのページをTweetして参加者に告知。
+      
   %footer
     %p.copyright
       created by

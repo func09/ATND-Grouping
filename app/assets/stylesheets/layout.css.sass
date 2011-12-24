@@ -1,200 +1,9 @@
-// reset
-
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, font, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-input, select, textarea
-  :margin 0
-  :padding 0
-  :border 0
-  :outline 0
-  :font-style inherit
-  :font-family inherit
-  :vertical-align baseline
-
-input, select, textarea
-  border: none
-  background: inherit
- 
-\:focus
-  :outline 0
-  
-body
-  :line-height 1
-  :color black
-  
-ol, ul
-  :list-styles none
-  
-table
-  :border-collapse separate
-  :border-spacing 0
-
-caption, th, td
-  :text-align left
-  :font-weight normal
-  
-blockquote:before, blockquote:after, q:before, q:after
-  :content ""
-  
-blockquote, q
-  quotes: "" ""
-
-=clearfix
-  zoom: 1
-  &:before,
-  &:after
-    display: block
-    height: 0
-    visibility: hidden
-    content: "\0020"
-  &:after
-    clear: both
-
-=center-block
-  margin: 0 auto  
-
-=inner-padding
-  padding: 15px
-  @media screen and (max-device-width: 480px)
-    padding: 8px
-=radius
-  border-radius: 4px
-  -webkit-border-radius: 4px
-  -moz-border-radius: 4px
-  -o-border-radius: 4px
-=button_radius
-  border-radius: 8px
-  -webkit-border-radius: 8px
-  -moz-border-radius: 8px
-  -o-border-radius: 8px
-=header-height
-  height: $header-height
-  @media screen and (max-device-width: 480px)
-    height: $mobile-header-height
-=form-label
-  color: $c-light
-  font-size: $f-l
-  line-height: $f-l * 2
-  width: 88px
-  float: left
-  clear: both
-  margin: 0 30px 0 0
-  @media screen and (max-device-width: 480px)
-    font-size: $f-m
-    line-height: $f-m * 2
-    margin: 0 20px 0 0
-    width: 58px
-  label
-    display: block
-    width: auto
-    line-height: $f-l * 2
-    height: $f-l * 2
-    background: $c-accent
-    padding: 0 0 0 10px                    
-    &::after
-      position: relative
-      margin-top: -18px
-      margin-right: -4px
-      margin-left: auto
-      display: block
-      height: $f-l
-      width: 7px
-      content: ' '
-      -webkit-transform: skew(-25deg)
-      background: $c-accent
-    &::before
-      float: right
-      margin-right: -4px
-      display: block
-      height: $f-l 
-      width: 7px
-      content: ' '
-      -webkit-transform: skew(25deg)
-      background: $c-accent
-    @media screen and (max-device-width: 480px)
-      line-height: $f-m * 2
-      height: $f-m * 2
-      padding: 0 0 0 5px
-      &::after
-        margin-top: -14px
-        margin-right: -4px
-        height: $f-m
-        width: 7px
-      &::before
-        float: right
-        margin-right: -4px
-        display: block
-        height: $f-m 
-        width: 7px
-=user
-  .user
-    width: 155px
-    display: block
-    float: left
-    padding: 5px 0 5px 0
-    height: 50px
-    .icon
-      padding: 0 10px 0 0
-      float: left
-      img
-        width: 40px
-        height: 40px
-    .name
-      width: 80px
-      float: left
-      word-break: break-all
-      font-size: $f-m
-      line-height: $f-m * 1.4
-  @media screen and (max-device-width: 480px)
-    .user
-      width: 92px
-      .icon
-        padding: 0 5px 0 0
-        float: left
-        img
-          width: 25px
-          height: 25px
-      .name
-        width: 55px
-        font-size: $f-s        
-        margin: -3px 0 0 0
-        line-height: $f-s * 1.4
-
-=next-button
-  width: $next-button-width * 2
-  @media screen and (max-device-width: 480px)
-    width: $mobile-next-button-width * 2
-  li
-    display: inline
-  a
-    width: $next-button-width
-    display: block
-    float: left
-    text-align: center
-    line-height: 40px
-    color: $c-light
-    text-decoration: none
-    font-size: $f-ll
-    @media screen and (max-device-width: 480px)
-      width: $mobile-next-button-width
-  .shuffle
-    a
-      background: $c-dark
-  .result
-    a
-      background: $c-accent
-
-
+@import reset.css.sass
+@import mixins.css.sass
 
 // colors
 $c-bg: #dcdcd9
-$c-light: #fff
+$c-light: #d3d3c7
 $c-accent: #c41616
 $c-dark: #909090
 $c-text: #666
@@ -215,19 +24,16 @@ $mobile-header-height: 50px
 $next-button-width: 200px
 $mobile-next-button-width: 120px
 
-
-
-
 // design
 
 html
-  background: #f0f0f0
+  background: #444
   font-family: sans-serif
   @media screen and (max-device-width: 480px)
     background: $c-bg
 
 body
-  background: $c-bg
+  background: url(/assets/body.gif),#4f4f4b
   max-width: $pc-width
   font-size: $f-m
   color: $c-text
@@ -238,9 +44,17 @@ body
     +clearfix
   #body
     clear: both
-    background: $c-bg
     >div
       +clearfix
+    h1.description
+      color: #d3d3c7
+      font-size: 18px
+      text-align: center
+      font-weight: normal
+      +text-shadow(#000 0 1px 1px)
+      @media screen and (max-device-width: 480px)
+        font-size: 13px
+        font-weight: bold
     #form
       +inner-padding
       margin: 15px 0
@@ -248,158 +62,268 @@ body
         display: block
         +clearfix
         margin: 0 0 25px 0
-        @media screen and (max-device-width: 480px)
-          margin: 0 0 18px 0
-        .label
-          +form-label
-        .input
-          float: left
-          input
-            background: $c-light
-            line-height: $f-l * 2
-            font-size: $f-l
-            box-shadow: none
-            -webkit-box-shadow: none !important
-            +radius
-            width: 505px
-            padding: 0 10px           
-            color: $c-text
+        p.inner
+          background: #d3d3c7
+          +border_radius(4px)
+          padding: 8px 20px
+          margin: 0 0 6px 0
+          +box-shadow(inset #848478 0 1px 2px, #89897f 0 1px 0)
+          +clearfix
+          padding: 8px 20px
+          @media screen and (max-device-width: 480px)
+            padding: 2px 10px
+          &:hover
+            background: #d3d3c7
+          .label
+            float: left
+            width: 100px
+            display: block
+            height: 28px
             @media screen and (max-device-width: 480px)
-              line-height: $f-s * 2
-              font-size: $f-s
-              width: 190px
-          select
-            font-size: $f-l
-            line-height: $f-l * 2
-            background: $c-light
+              width: 50px
+            label
+              text-indent: -9999px
+              display: block
+          .input
+            float: left
+            input
+              background: transparent
+              line-height: $f-ll * 1.6
+              font-size: $f-l
+              width: 480px
+              color: $c-text
+              +border_radius(4px)
+              font-weight: bold              
+              +text-shadow(#e9e9da 0 1px 0)
+              @media screen and (max-device-width: 480px)
+                line-height: $f-m * 2
+                font-size: $f-m
+                width: 200px 
+              &:focus
+                color: #9b1828
+            select
+              font-size: $f-l
+              line-height: $f-l * 2
+              background: transparent
+              background-image: none
+              +gradient("null",#d3d3c7,#d3d3c7)
+              display: block
+              margin: 2px 0 0 0
+              padding: 0 4px
+              color: $c-text
+              font-size: $f-l
+              &:focus
+                background: transparent
+              @media screen and (max-device-width: 480px)
+                font-size: $f-m
+                line-height: $f-m * 2
+                width: 200px
+                margin: 0
+                font-weight: bold
         .note
           font-size: $f-s
           clear: both
-          padding: 10px 0 0 0
+          padding: 4px 0 0 0
           color: $c-dark
           @media screen and (max-device-width: 480px)
-            padding: 10px 0 0 0
             font-size: $f-ss
+      li.url
+        p.inner
+          .label
+            background: url(/assets/form_li_url.png) no-repeat center left
+            @media screen and (max-device-width: 480px)
+              -webkit-background-size: 18px 10px
+      li.groups
+        p.inner
+          .label
+            background: url(/assets/form_li_groups.png) no-repeat center left
+            @media screen and (max-device-width: 480px)
+              -webkit-background-size: 40px 10px
+          
+            
       .commit
         text-align: center
         @media screen and (max-device-width: 480px)
           padding: 15px 0 0 0
         input
-          display: block
+          +green_button
           margin: 0 auto
           border: none
-          background: $c-accent none
           font-size: $f-l
           line-height: $f-l * 2.4
           cursor: pointer
           width: 200px
           color: $c-light
-          +button_radius
           font-weight: bold
           cursor: pointer
-          &:hover
-            opacity: 0.6
           @media screen and (max-device-width: 480px)
-            background: -webkit-gradient(linear, left bottom, left top, color-stop(0, rgb(196,22,22)))
             font-size: $f-l
             line-height: $f-l * 2
             width: 150px
-            
-        
-    h1
-      background: $c-dark
-      color: $c-light
-      font-size: $f-l
-      line-height: $f-l * 1.2
-      +inner-padding
-      @media screen and (max-device-width: 480px)
-        font-size: $f-m
-        line-height: $f-m * 1.3
-    h1.description
-      @media screen and (max-device-width: 480px)
-        font-size: $f-s
-        line-height: $f-s * 1.4
+
     .acceoted_users
       display: block
       padding: 15px 15px 5px 15px 
-      color: $c-accent
+      color: #d3d3c7
       font-size: $f-s
+      +text-shadow(#3a3a35 0 -1px 0)
       .number
         font-weight: bold
         font-size: $f-ll
         margin: 0 5px
     #groupings
-      +inner-padding
+      padding: 25px 25px 0 25px
       >div
         +clearfix     
       .grouping
-        margin: 0 0 20px 0
+        margin: 0 0 36px 0
         +clearfix
         h2
-          background: $c-dark
+          +gradient("null",#363635,#20201e)
           color: $c-light
           float: left
           font-size: $f-l
-          padding: 6px 56px 3px 16px
+          line-height: $f-l * 2
+          padding: 0 16px 0 12px
+          margin: 0 0 6px 0
+          +border_radius(4px)
+          +box-shadow(inset #222 0 1px 2px, #6c6c68 0 1px 1px)
+          +text-shadow(#000 0 -1px 0)
           @media screen and (max-device-width: 480px)
             font-size: $f-m
-            padding: 6px 46px 3px 10px
+            line-height: $f-m * 1.8
+            padding: 0 14px
+          &:before
+            content: "▼"
+            font-size: 10px
+            vertical-align: middle
+            margin: 0 6px 0 0
         .users
-          border: $c-dark solid 6px
-          padding: 8px 8px 0 8px
+          padding: 12px 4px 0 12px
           clear: both
-          background: $c-light
+          background: #d3d3c7          
+          +box-shadow(inset #a4a497 0 1px 2px, #6c6c68 0 1px 1px)
+          +border_radius(4px)
           +clearfix
           +user
+          @media screen and (max-device-width: 480px)
+            padding: 12px 0 0 12px
+          
     #users
       +inner-padding
       ul
-        background: $c-light
-        border: $c-dark solid 6px
+        background: #d3d3c7
         padding: 8px
+        +box-shadow(inset #a4a497 0 1px 2px)
         +clearfix
         +user
     .next
       +center-block
       +next-button
-              
-        
-
-header
-  background: $c-light
-  +clearfix
-  h1
-    font-weight: normal
-    a
-      font-size: $f-exl
-      display: block
+  .event
+    margin: 0
+    padding: 0 25px
+    +gradient(url(/assets/event.png),#810b18,#6a030f)
+    +box-shadow(inset #320208 0 1px 2px)
+    +clearfix
+    color: #d3d3c7
+    border-bottom: #6c6c68 solid 1px
+    h1
+      font-size: 24px
+      line-height: 1.4
+      +text-shadow(#320208 0 1px 0)
+      margin: 0 0 14px 0
+      span.atnd_url
+        display: inline-block
+        vertical-align: middle
+        a
+          +green_button
+          font-size: 12px
+          line-height: 22px
+          padding: 0 10px
+    h2
+      font-size: 12px
+      line-height: 1.4
+      font-weight: normal
+      margin: 0 0 8px 0
+    li
+      line-height: 1.4
+      font-size: 12px
+      margin: 0 6px 0 0
+      display: inline
+    .main
+      width: 520px
       float: left
-      padding: 25px 15px
-      font-family: 'Righteous', cursive
-      text-decoration: none
-      line-height: $f-exl * 1.5
-      span
+      padding: 12px 0
+    .sub
+      width: 83px
+      float: right
+      p.owner
+        text-align: center
         display: block
-        float: left
-        color: $c-accent
-      .atnd
-        color: $c-light
-        background: $c-accent
-        padding: 0 $f-exl * 0.2
-        margin: 0 $f-exl * 0.3 0 0
-    @media screen and (max-device-width: 480px)
-      a
-        line-height: $f-lll * 1.5
-        font-size: $f-lll
-        padding: 15px 8px
-        .atnd
-          padding: 0 $f-lll * 0.2
-          margin: 0 $f-lll * 0.3 0 0
+        margin: 0
+        background: url(/assets/owner.png) center bottom
+        padding: 0 2px 30px 2px
+        span
+          display: block
+          font-size: 12px
+          &:before
+            content: ""
+            display: block
+            height: 4px
+            +gradient("null",#3f0c11,#5d1d24)
+            margin: 0 0 6px 0
+        a
+          display: block
+          color: #d3d3c7
+          font-size: 10px
+          &:link,
+          &:visited
+            text-decoration: none
+            img
+              +box-shadow(none)
+          &:hover,
+          &:active
+            text-decoration: underline
+            img
+              +box-shadow(#e45766 0 0 5px)
+          img
+            width: 22px
+            height: 22px
+            display: block
+            margin: 8px auto 4px auto
+            
+header
+  +clearfix
+  position: relative
+  h1
+    a
+      display: block
+      width: 324px
+      height: 128px
+      background: url(/assets/h1.png) no-repeat
+      margin: 0 auto
+      text-indent: -9999px
+      padding: 0 0 17px 0
+      &:link,
+      &:visited
+        opacity: 1
+      &:hover,
+      &:active
+        opacity: 0.8
+      @media screen and (max-device-width: 480px)
+        -webkit-background-size: 162px 64px
+        width: 162px
+        height: 64px
         
   .usage
-    padding: 10px 15px
+    position: absolute
+    top:  30px
+    right: 30px
     @media screen and (max-device-width: 480px)
       padding: 10px 8px
+      top:  0
+      right: 0
     a
       display: block
       float: right
@@ -408,32 +332,39 @@ header
       height: $mobile-header-height - 20px
       width:  $mobile-header-height - 20px
       text-align: center
-      border-radius: ($mobile-header-height - 20px) / 2
-      -webkit-border-radius: ($mobile-header-height - 20px) / 2
-      -moz-border-radius: ($mobile-header-height - 20px) / 2
-      -o-border-radius: ($mobile-header-height - 20px) / 2
+      +border_radius(($mobile-header-height - 20px) / 2)
       background: $c-dark
       color: $c-light
       text-decoration: none
       font-weight: bold
+      +box-shadow(inset #000 0 0 1px)
       @media screen and (max-device-width: 480px)
         line-height: $mobile-header-height - 20px
 
 .tweet
   text-align: center
   +clearfix
+  margin: 0 0 20px 0
+.retry
+  padding: 0 25px 0 0
+  a
+    +green_button
+    font-size: 12px
+    line-height: 24px
+    padding: 0 10px
+    float: right
 
 footer
   padding-top: 45px
   padding-bottom: 45px
   .copyright
     text-align: center
-    color: $c-accent
+    color: #d3d3c7
     font-size: $f-s
     @media screen and (max-device-width: 480px)
       font-size: $f-ss
     a
-      color: $c-accent
+      color: #d3d3c7
       &:link,
       &:visited
         text-decoration: none

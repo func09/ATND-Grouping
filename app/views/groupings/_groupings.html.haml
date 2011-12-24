@@ -1,26 +1,30 @@
-%h1
-  イベント名：
-  = @grouping.title
-
-%dl
-  %dt Event Title
-  %dd= @grouping.title
-  %dt Event Catch
-  %dd= @grouping.catch
-  %dt Event URL
-  %dd= link_to @grouping.event_url, @grouping.event_url
-  %dt Event Address
-  %dd= @grouping.address
-  %dt Event Date
-  %dd= @grouping.started_at.strftime("%Y/%m/%d %H:%M")
-  %dt Event Owner
-  %dd= @grouping.owner_nickname
-
+%section.event
+  .main
+    %h1
+      = @grouping.title
+      %span.atnd_url= link_to "ATND", @grouping.event_url
+    %h2= @grouping.catch
+    %ul
+      %li= @grouping.started_at.strftime("%Y/%m/%d %H:%M")
+      %li= @grouping.address
+      %li.owner
+        -unless @grouping.owner_twitter_id?
+          開催者
+          = @grouping.owner_nickname 
+  .sub
+    -if @grouping.owner_twitter_id?
+      %p.owner
+        %span
+          開催者
+          = link_to "http://twitter.com/#{@grouping.owner_twitter_id}", :taget => "_blank" do
+            %img{:alt => "#{@grouping.owner_twitter_id}", :src => "http://img.tweetimag.es/i/#{@grouping.owner_twitter_id}_n"}
+            = @grouping.owner_twitter_id
+    
 %p.acceoted_users
-  イベントの人数：
+  イベントの人数
   %span.number= @grouping.users.size
   人 / 
-  グループの数：
+  グループの数
   %span.number= @grouping.groupings_count
 
 #groupings
@@ -50,6 +54,8 @@
       %li.shuffle= link_to 'やり直す', ''
       %li.result= link_to '確定', ''
 - when 'show'
-  .next
-    %ul
-      %li.result= link_to '新しくシャッフルする', root_path(:event_url => @grouping.event_url)
+  .tweet
+    %a.twitter-share-button{"data-count" => "vertical", "data-lang" => "ja", :href => "https://twitter.com/share"} ツイート
+  %script{:src => "//platform.twitter.com/widgets.js", :type => "text/javascript"}
+  .retry
+    = link_to '新しくシャッフルする', root_path(:event_url => @grouping.event_url)

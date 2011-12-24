@@ -1,0 +1,218 @@
+=clearfix
+  zoom: 1
+  &:before,
+  &:after
+    display: block
+    height: 0
+    visibility: hidden
+    content: "\0020"
+  &:after
+    clear: both
+
+=center-block
+  margin: 0 auto  
+
+=inner-padding
+  padding: 25px
+  @media screen and (max-device-width: 480px)
+    padding: 8px
+=header-height
+  height: $header-height
+  @media screen and (max-device-width: 480px)
+    height: $mobile-header-height
+
+=user
+  .user
+    width: 150px
+    display: block
+    float: left
+    padding: 5px 0 5px 0
+    height: 50px
+    .icon
+      padding: 0 10px 0 0
+      float: left
+      img
+        width: 40px
+        height: 40px
+    .name
+      width: 80px
+      float: left
+      word-break: break-all
+      font-size: $f-m
+      line-height: $f-m * 1.4
+  @media screen and (max-device-width: 480px)
+    .user
+      width: 95px
+      height: 35px
+      .icon
+        padding: 0 5px 0 0
+        float: left
+        img
+          width: 25px
+          height: 25px
+      .name
+        width: 57px
+        font-size: $f-s        
+        margin: -3px 0 0 0
+        line-height: $f-s * 1.2
+        padding: 0 6px 0 0
+
+=next-button
+  width: $next-button-width * 2 + 4
+  @media screen and (max-device-width: 480px)
+    width: $mobile-next-button-width * 2 + 4
+  li
+    display: inline
+  a
+    width: $next-button-width
+    display: block
+    float: left
+    line-height: 40px
+    font-size: $f-ll
+    @media screen and (max-device-width: 480px)
+      width: $mobile-next-button-width
+  .shuffle
+    a
+      +gray_button
+      +border_radius("null", 8px, 0, 0, 8px)
+  .result
+    a
+      +red_button
+      +border_radius("null", 0, 8px, 8px, 0)
+
+=box-shadow($box-shadow-value1:"null",$box-shadow-value2:"null",$box-shadow-value3:"null",$box-shadow-value4:"null")
+  @if $box-shadow-value4 != "null"
+    box-shadow: $box-shadow-value1, $box-shadow-value2 ,$box-shadow-value3 ,$box-shadow-value4
+    -webkit-box-shadow: $box-shadow-value1, $box-shadow-value2 ,$box-shadow-value3 ,$box-shadow-value4
+    -moz-box-shadow: $box-shadow-value1, $box-shadow-value2 ,$box-shadow-value3 ,$box-shadow-value4
+    -o-box-shadow: $box-shadow-value1, $box-shadow-value2 ,$box-shadow-value3 ,$box-shadow-value4
+  @else if $box-shadow-value3 != "null"
+    box-shadow: $box-shadow-value1, $box-shadow-value2 ,$box-shadow-value3
+    -webkit-box-shadow: $box-shadow-value1, $box-shadow-value2 ,$box-shadow-value3
+    -moz-box-shadow: $box-shadow-value1, $box-shadow-value2 ,$box-shadow-value3
+    -o-box-shadow: $box-shadow-value1, $box-shadow-value2 ,$box-shadow-value3
+  @else if $box-shadow-value2 != "null"
+    box-shadow: $box-shadow-value1, $box-shadow-value2
+    -webkit-box-shadow: $box-shadow-value1, $box-shadow-value2
+    -moz-box-shadow: $box-shadow-value1, $box-shadow-value2
+    -o-box-shadow: $box-shadow-value1, $box-shadow-value2
+  @else
+    box-shadow: $box-shadow-value1
+    -webkit-box-shadow: $box-shadow-value1
+    -moz-box-shadow: $box-shadow-value1
+    -o-box-shadow: $box-shadow-value1
+
+=text-shadow($text-shadow-value1:"null",$text-shadow-value2:"null",$text-shadow-value3:"null",$text-shadow-value4:"null")
+  @if $text-shadow-value4 != "null"
+    text-shadow: $text-shadow-value1, $text-shadow-value2 ,$text-shadow-value3 ,$text-shadow-value4
+    -webkit-text-shadow: $text-shadow-value1, $text-shadow-value2 ,$text-shadow-value3 ,$text-shadow-value4
+    -moz-text-shadow: $text-shadow-value1, $text-shadow-value2 ,$text-shadow-value3 ,$text-shadow-value4
+    -o-text-shadow: $text-shadow-value1, $text-shadow-value2 ,$text-shadow-value3 ,$text-shadow-value4
+  @else if $text-shadow-value3 != "null"
+    text-shadow: $text-shadow-value1, $text-shadow-value2 ,$text-shadow-value3
+    -webkit-text-shadow: $text-shadow-value1, $text-shadow-value2 ,$text-shadow-value3
+    -moz-text-shadow: $text-shadow-value1, $text-shadow-value2 ,$text-shadow-value3
+    -o-text-shadow: $text-shadow-value1, $text-shadow-value2 ,$text-shadow-value3
+  @else if $text-shadow-value2 != "null"
+    text-shadow: $text-shadow-value1, $text-shadow-value2
+    -webkit-text-shadow: $text-shadow-value1, $text-shadow-value2
+    -moz-text-shadow: $text-shadow-value1, $text-shadow-value2
+    -o-text-shadow: $text-shadow-value1, $text-shadow-value2
+  @else
+    text-shadow: $text-shadow-value1
+    -webkit-text-shadow: $text-shadow-value1
+    -moz-text-shadow: $text-shadow-value1
+    -o-text-shadow: $text-shadow-value1
+
+=border_radius($allRadius: "null", $top-left: 0, $top-right: 0, $bottom-right: 0, $bottom-left: 0)
+  @if $allRadius != "null"
+    -moz-border-radius: $allRadius
+    -webkit-border-radius: $allRadius
+    border-radius: $allRadius
+  @else
+    $eachCorner: top-left, top-right, bottom-right, bottom-left
+    $MozTBLR: ""
+    $radius: ""
+    @each $corner in $eachCorner
+      @if $corner == top-left
+        $MozTBLR: topleft
+        $radius: $top-left
+      @else if $corner == top-right
+        $MozTBLR: topright
+        $radius: $top-right
+      @else if $corner == bottom-left
+        $MozTBLR: bottomleft
+        $radius: $bottom-left
+      @else if $corner == bottom-right
+        $MozTBLR: bottomright
+        $radius: $bottom-right
+      -moz-border-radius#{-$MozTBLR}: $radius
+      -webkit-border#{-$corner}-radius: $radius
+      border#{-$corner}-radius: $radius
+=gradient($gradient-img: "null", $top-color: 0, $bottom-color: 0)
+  @if $gradient-img != "null"  
+    background: $gradient-img, $top-color
+    background: $gradient-img, -moz-linear-gradient(top, $top-color 0%, $bottom-color 100%)
+    background: $gradient-img, -webkit-gradient(linear, left top, left bottom, color-stop(0%, $top-color), color-stop(100%, $bottom-color))
+    background: $gradient-img, -webkit-linear-gradient(top, $top-color 0%, $bottom-color 100%)
+    background: $gradient-img, -o-linear-gradient(top, $top-color 0%, $bottom-color 100%)
+    background: $gradient-img, -ms-linear-gradient(top, $top-color 0%, $bottom-color 100%)
+    filter: $gradient-img, progid:DXImageTransform.Microsoft.gradient(startColorstr='$top-color', endColorstr='$bottom-color',GradientType=0 )
+    background: $gradient-img, linear-gradient(top, $top-color 0%, $bottom-color 100%)    
+  @else
+    background: $top-color
+    background: -moz-linear-gradient(top, $top-color 0%, $bottom-color 100%)
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, $top-color), color-stop(100%, $bottom-color))
+    background: -webkit-linear-gradient(top, $top-color 0%, $bottom-color 100%)
+    background: -o-linear-gradient(top, $top-color 0%, $bottom-color 100%)
+    background: -ms-linear-gradient(top, $top-color 0%, $bottom-color 100%)
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='$top-color', endColorstr='$bottom-color',GradientType=0 )
+    background: linear-gradient(top, $top-color 0%, $bottom-color 100%)
+=green_button
+  display: block
+  text-align: center
+  text-decoration: none
+  +text-shadow(#320208 0 1px 0)
+  +gradient("null",#4a7607,#345212) 
+  color: #d3d3c7
+  +border_radius(6px)
+  +box-shadow(inset #518009 0 0 1px, inset #2e4b01 0 0 5px, #31312d 0 2px 2px)
+  border: #345807 solid 1px
+  &:link,
+  &:visited
+    opacity: 1
+  &:hover,
+  &:active
+    opacity: 0.8
+=red_button
+  display: block
+  text-align: center
+  text-decoration: none
+  +text-shadow(#320208 0 1px 0)
+  +gradient("null",#720713,#410209) 
+  color: #d3d3c7
+  +border_radius(6px)
+  +box-shadow(inset #518009 0 0 1px, inset #4b030b 0 0 5px, #31312d 0 2px 2px)
+  border: #57030c solid 1px
+  &:link,
+  &:visited
+    opacity: 1
+  &:hover,
+  &:active
+    opacity: 0.8
+=gray_button
+  display: block
+  text-align: center
+  text-decoration: none
+  +text-shadow(#320208 0 1px 0)
+  +gradient("null",#5f5f5b,#393934) 
+  color: #d3d3c7
+  +border_radius(6px)
+  +box-shadow(inset #555 0 0 1px, inset #444 0 0 5px, #31312d 0 2px 2px)
+  border: #45453d solid 1px
+  &:link,
+  &:visited
+    opacity: 1
+  &:hover,
+  &:active
+    opacity: 0.8

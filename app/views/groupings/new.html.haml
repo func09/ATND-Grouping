@@ -1,22 +1,24 @@
-%h1.description ATNDイベントに参加している人達をランダムにグループ別けするためのツールです
+%h1.description ATNDイベント参加者をランダムにグループ別け
 = form_for @grouping, :url => preview_groupings_path, :remote => true do |f|
   #form
     %fieldset
       %ol
-        %li
-          %p.label
-            = f.label :event_url, 'URL'
-          %p.input
-            = f.text_field :event_url
+        %li.url
+          %p.inner
+            %span.label
+              = f.label :event_url, 'URL'
+            %span.input
+              = f.text_field :event_url
           %p.note
             ATNDのURLをコピペ
             %span
               （例：http://atnd.org/events/22605）
-        %li
-          %p.label
-            = f.label :event_url, 'Groups'
-          %p.input
-            = f.select :groupings_count, (2..100).to_a, :include_blank => 'グループ数を選択'
+        %li.groups
+          %p.inner
+            %span.label
+              = f.label :event_url, 'Groups'
+            %span.input
+              = f.select :groupings_count, (2..100).to_a, :include_blank => 'グループ数を選択'
       %p.commit
         = f.submit 'シャッフル', :onclick => "location.href='#result'"
 
