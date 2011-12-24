@@ -1,12 +1,15 @@
 !!!
 %html
   %head
-    %title AtndGrouping
+    %title ATND GROUPING
     = stylesheet_link_tag    "application"
     = javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"
     = javascript_include_tag "application"
     = javascript_include_tag "facebox.js"
     %meta(name="viewport" content="width=device-width, height=device-height, initial-scale=1.0")
+    %link(rel="icon" type="image/png" href="/favicon.png")
+    %link(rel="shortcut icon" type="image/x-icon" href="/favicon.ico")
+    %link(rel="apple-touch-icon" href="/icon.png")
     = csrf_meta_tags
     :javascript
       jQuery(document).ready(function($) {
