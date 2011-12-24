@@ -42,7 +42,6 @@ ATNDイベント参加者をランダムにグループ別けするツールで�
 ライセンス
 -----
 
-Copyright (c) 2011 @func09.
+Copyright (c) 2011 @func09 (https://twitter.com/func09).
 
 MIT License (http://www.opensource.org/licenses/mit-license.php)
-https://twitter.com/func09
