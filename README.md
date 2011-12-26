@@ -26,18 +26,20 @@ ATNDイベント参加者をランダムにグループ別けするツールで�
 
     $ git clone git@github.com:func09/ATND-Grouping.git
     $ cd ATND-Grouping
-    $ bundle%h3 ターミナル2
-
+    $ bundle%
+    
+### ターミナル2
 
 ターミナル1は開いたまま、もう一つターミナルを立ち上げ、そこでmongoDBを立ち上げる。
 
     $ cd ATND-Grouping
-    $ mongod%h3 ターミナル1
+    $ mongod
 
+### ターミナル1
 
 ターミナル1に戻り、railsサーバを立ち上げる。
 
-`$ rails s`
+    $ rails s
 
 ライセンス
 -----
