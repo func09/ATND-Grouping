@@ -7,6 +7,10 @@ class Grouping
       .ajaxStop ()->
         $(this).fadeOut()
     
+    $('#grouping_groupings_count')
+      .live 'change', (event) ->
+        $('#btn_shuffle').attr('disabled',@.selectedIndex == 0)
+    
     $('#new_grouping')
       .live 'ajax:complete', (event, data, status, xhr)->
         $('#results').html(data.responseText)

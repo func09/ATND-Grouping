@@ -20,7 +20,7 @@
             %span.input
               = f.select :groupings_count, (2..100).to_a, :include_blank => 'グループ数を選択'
       %p.commit
-        = f.submit 'シャッフル', :onclick => "location.href='#result'"
+        = f.submit 'シャッフル', :onclick => "location.href='#result'", :id => 'btn_shuffle'
 
 #results
 
