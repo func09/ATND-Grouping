@@ -8,11 +8,10 @@
             %span.label
               = f.label :event_url, 'URL'
             %span.input
-              = f.text_field :event_url
-          %p.note
-            ATNDのURLをコピペ
-            %span
-              （例：http://atnd.org/events/22605）
+              - if mobile?
+                = f.text_field :event_url, :title => 'ATNDイベントURLをここにコピペ'
+              - else
+                = f.text_field :event_url, :title => 'ATNDイベントURLを入力 （例：http://atnd.org/events/22605）'
         %li.groups
           %p.inner
             %span.label
@@ -20,7 +19,7 @@
             %span.input
               = f.select :groupings_count, (2..100).to_a, :include_blank => 'グループ数を選択'
       %p.commit
-        = f.submit 'シャッフル', :onclick => "location.href='#result'", :id => 'btn_shuffle'
+        = f.submit 'シャッフル', :id => 'btn_shuffle'
 
 #results
 

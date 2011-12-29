@@ -66,7 +66,7 @@ body
             display: block
             height: 28px
             @media screen and (max-device-width: 480px)
-              width: 50px
+              display: none
             label
               text-indent: -9999px
               display: block
@@ -76,7 +76,7 @@ body
               background: transparent
               line-height: 18px * 1.6
               font-size: 16px
-              width: 480px
+              width: 490px
               color: #666
               +border_radius(4px)
               font-weight: bold              
@@ -84,9 +84,11 @@ body
               @media screen and (max-device-width: 480px)
                 line-height: 14px * 2
                 font-size: 14px
-                width: 200px 
+                width: 270px 
               &:focus
                 color: #9b1828
+                background: #fff
+                +text-shadow(none)
             select
               font-size: 16px
               line-height: 16px * 2
