@@ -16,7 +16,7 @@
       %p.owner
         %span
           開催者
-          = link_to "http://twitter.com/#{@grouping.owner_twitter_id}", :taget => "_blank" do
+          = link_to "http://twitter.com/#{@grouping.owner_twitter_id}", :target => "_blank" do
             %img{:alt => "#{@grouping.owner_twitter_id}", :src => "http://img.tweetimag.es/i/#{@grouping.owner_twitter_id}_n"}
             = @grouping.owner_twitter_id
     
