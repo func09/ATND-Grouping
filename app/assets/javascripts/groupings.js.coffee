@@ -7,13 +7,23 @@ class Grouping
       .ajaxStop ()->
         $(this).fadeOut()
     
+    $('#grouping_groupings_count')
+      .live 'change', (event) ->
+        if @.selectedIndex == 0
+          $('#btn_shuffle').attr('disabled','disabled')
+          $('li.shuffle').attr('disabled','disabled')
+        else
+          $('#btn_shuffle').removeAttr('disabled')
+          $('li.shuffle').removeAttr('disabled')
+          
     $('#new_grouping')
       .live 'ajax:complete', (event, data, status, xhr)->
         $('#results').html(data.responseText)
     
     $('li.shuffle').live 'click', (e)->
       e.preventDefault()
-      $('#new_grouping').submit()
+      unless $(@).attr('disabled')
+        $('#new_grouping').submit()
       
     $('li.result').live 'click', (e)->
       e.preventDefault()
@@ -21,5 +31,7 @@ class Grouping
       callback = (data,status)->
         window.location.href = "/groupings/#{data._id}"
       $.post '/groupings', {grouping: json}, callback, 'json'
+    
+    $('#grouping_groupings_count').change()
 
 window.Grouping = Grouping

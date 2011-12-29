@@ -37,7 +37,7 @@
         - group.users.each do |user|
           %li.user
             %p.icon
-              - if user.twitter_img.present?
+              - if user.twitter_img.present? && user.twitter_img != 'null'
                 = image_tag user.twitter_img
               - else
                 = image_tag 'no_icon.gif'
