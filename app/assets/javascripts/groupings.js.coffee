@@ -1,4 +1,22 @@
 class Grouping
+  
+  # シャッフルボタンの状態を変更する
+  @updateShuffleBtn: ()->
+  
+    $$event_url = $('#grouping_event_url')
+    $$groupings_count = $('#grouping_groupings_count')[0]
+    
+    if $$groupings_count.selectedIndex == 0 or $$event_url.val() == $$event_url.attr('title') or $$event_url.val() == ''
+      # シャッフルボタンを無効にする
+      $('#btn_shuffle').attr('disabled','disabled')
+      $('li.shuffle').attr('disabled','disabled')
+      $('#btn_shuffle').css('display','none')
+    else
+      # シャッフルボタンを有効にする
+      $('#btn_shuffle').removeAttr('disabled')
+      $('li.shuffle').removeAttr('disabled')
+      $('#btn_shuffle').css('display','block')
+  
   @init: ()->
     
     $('#loading')
@@ -6,26 +24,26 @@ class Grouping
         $(this).fadeIn()
       .ajaxStop ()->
         $(this).fadeOut()
-        
-    $('#grouping_groupings_count')
-      .live 'change', (event) ->
-        if @.selectedIndex == 0
-          $('#btn_shuffle').attr('disabled','disabled')
-          $('li.shuffle').attr('disabled','disabled')
-          $('#btn_shuffle').css('display','none')
-        else
-          $('#btn_shuffle').removeAttr('disabled')
-          $('li.shuffle').removeAttr('disabled')
-          $('#btn_shuffle').css('display','block')
+    
+    # イベントURL
+    $('#grouping_event_url').change(->
+      Grouping.updateShuffleBtn()
+    )
+    
+    # グループ数
+    $('#grouping_groupings_count').change(->
+      Grouping.updateShuffleBtn()
+    )
           
     $('#new_grouping')
       .live 'ajax:complete', (event, data, status, xhr)->
         $('#results').html(data.responseText)
     
-    $('li.shuffle').live 'click', (e)->
+    # シャッフルボタン
+    $('li.shuffle').live('click', (e)->
       e.preventDefault()
-      unless $(@).attr('disabled')
-        $('#new_grouping').submit()
+      $('#new_grouping').submit() unless $(@).attr('disabled')
+    )
       
     $('li.result').live 'click', (e)->
       e.preventDefault()
