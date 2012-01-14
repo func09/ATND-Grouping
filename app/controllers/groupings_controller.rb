@@ -3,9 +3,7 @@ class GroupingsController < ApplicationController
   def new
     @grouping = Grouping.new
     @grouping.event_url = params[:event_url].present? ? params[:event_url] : ''
-    # unless params[:event_url]
-    #   @grouping.event_url = 'http://atnd.org/events/17223'
-    
+    @grouping.groupings_count = params[:groupings_count].present? ? params[:groupings_count] : nil
   end
   
   def preview

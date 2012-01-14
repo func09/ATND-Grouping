@@ -1,12 +1,17 @@
 class Grouping
   
+  # シャッフルできる状態か？
+  @isShuffle:()->
+    $$event_url = $('#grouping_event_url')
+    $$groupings_count = $('#grouping_groupings_count')[0]
+    return $$groupings_count.selectedIndex != 0 and 
+           $$event_url.val() != $$event_url.attr('title') and
+           $$event_url.val() != ''
+  
   # シャッフルボタンの状態を変更する
   @updateShuffleBtn: ()->
   
-    $$event_url = $('#grouping_event_url')
-    $$groupings_count = $('#grouping_groupings_count')[0]
-    
-    if $$groupings_count.selectedIndex == 0 or $$event_url.val() == $$event_url.attr('title') or $$event_url.val() == ''
+    if Grouping.isShuffle()
       # シャッフルボタンを無効にする
       $('#btn_shuffle').attr('disabled','disabled')
       $('li.shuffle').attr('disabled','disabled')
@@ -42,7 +47,7 @@ class Grouping
     # シャッフルボタン
     $('li.shuffle').live('click', (e)->
       e.preventDefault()
-      $('#new_grouping').submit() unless $(@).attr('disabled')
+      $('#new_grouping').submit() if Grouping.isShuffle()
     )
       
     $('li.result').live 'click', (e)->
@@ -52,7 +57,11 @@ class Grouping
         window.location.href = "/groupings/#{data._id}"
       $.post '/groupings', {grouping: json}, callback, 'json'
     
-    $('#grouping_groupings_count').change()
+    # 初期処理
+    Grouping.updateShuffleBtn()
+    # シャッフル可能ならすぐシャッフルする
+    $('#new_grouping').submit() if Grouping.isShuffle()
+      
 
 window.Grouping = Grouping
 

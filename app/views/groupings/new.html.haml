@@ -17,7 +17,7 @@
             %span.label
               = f.label :event_url, 'Groups'
             %span.input
-              = f.select :groupings_count, (2..100).to_a, :include_blank => 'グループ数を選択'
+              = f.select :groupings_count, options_for_select((2..100).to_a, @grouping.groupings_count), :include_blank => 'グループ数を選択'
       %p.commit
         = f.submit 'シャッフル', :id => 'btn_shuffle'
 
