@@ -40,6 +40,7 @@ class Grouping
     groups = []
     users = self.users.dup.shuffle
     people_count = (users.size / count)
+    
     count.times do
       group = Group.new
       people_count.times do
@@ -47,6 +48,16 @@ class Grouping
       end
       groups << group
     end
+    
+    # 余った人の処理
+    # FIXME 今は余った人を適当なグループに突っ込むだけ
+    unless users.empty?
+      users.each do |user|
+        group = groups.sample
+        group.users << user
+      end
+    end
+    
     self.groups = groups
   end
   
