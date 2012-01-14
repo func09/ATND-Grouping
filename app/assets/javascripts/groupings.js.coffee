@@ -12,15 +12,15 @@ class Grouping
   @updateShuffleBtn: ()->
   
     if Grouping.isShuffle()
-      # シャッフルボタンを無効にする
-      $('#btn_shuffle').attr('disabled','disabled')
-      $('li.shuffle').attr('disabled','disabled')
-      $('#btn_shuffle').css('display','none')
-    else
       # シャッフルボタンを有効にする
       $('#btn_shuffle').removeAttr('disabled')
       $('li.shuffle').removeAttr('disabled')
       $('#btn_shuffle').css('display','block')
+    else
+      # シャッフルボタンを無効にする
+      $('#btn_shuffle').attr('disabled','disabled')
+      $('li.shuffle').attr('disabled','disabled')
+      $('#btn_shuffle').css('display','none')
   
   @init: ()->
     
