@@ -2,7 +2,7 @@ class GroupingsController < ApplicationController
   respond_to :html, :json
   def new
     @grouping = Grouping.new
-    @grouping.event_url = params[:event_url].present? ? params[:event_url] : ''
+    @grouping.event_id = params[:event_id].present? ? params[:event_id] : ''
     @grouping.groupings_count = params[:groupings_count].present? ? params[:groupings_count] : nil
   end
   

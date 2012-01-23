@@ -58,4 +58,4 @@
     %a.twitter-share-button{"data-count" => "vertical", "data-lang" => "ja", :href => "https://twitter.com/share"} ツイート
   %script{:src => "//platform.twitter.com/widgets.js", :type => "text/javascript"}
   .retry
-    = link_to '新しくシャッフルする', root_path(:event_url => @grouping.event_url, :groupings_count => @grouping.groupings_count)
+    = link_to '新しくシャッフルする', root_path(:event_id => @grouping.event_id, :groupings_count => @grouping.groupings_count)

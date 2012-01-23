@@ -2,11 +2,11 @@ class Grouping
   
   # シャッフルできる状態か？
   @isShuffle:()->
-    $$event_url = $('#grouping_event_url')
+    $$event_id = $('#grouping_event_id')
     $$groupings_count = $('#grouping_groupings_count')[0]
     return $$groupings_count.selectedIndex != 0 and 
-           $$event_url.val() != $$event_url.attr('title') and
-           $$event_url.val() != ''
+           /^[0-9]+$/.test($$event_id.val()) and
+           $$event_id.val() != ''
   
   # シャッフルボタンの状態を変更する
   @updateShuffleBtn: ()->
@@ -31,7 +31,7 @@ class Grouping
         $(this).fadeOut()
     
     # イベントURL
-    $('#grouping_event_url').change(->
+    $('#grouping_event_id').change(->
       Grouping.updateShuffleBtn()
     )
     

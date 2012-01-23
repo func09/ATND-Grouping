@@ -6,16 +6,16 @@
         %li.url
           %p.inner
             %span.label
-              = f.label :event_url, 'URL'
+              = f.label :event_id, 'URL'
+              http://atnd.org/events/
             %span.input
-              - if mobile?
-                = f.text_field :event_url, :title => 'ATNDイベントURLをここにコピペ'
-              - else
-                = f.text_field :event_url, :title => 'ATNDイベントURLを入力 （例：http://atnd.org/events/22605）'
+              = f.text_field :event_id
+            %span.help-block
+              ATNDイベントIDを入力 （例：22605）
         %li.groups
           %p.inner
             %span.label
-              = f.label :event_url, 'Groups'
+              = f.label :groupings_count, 'Groups'
             %span.input
               = f.select :groupings_count, options_for_select((2..100).to_a, @grouping.groupings_count), :include_blank => 'グループ数を選択'
       %p.commit
