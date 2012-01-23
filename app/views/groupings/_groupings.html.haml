@@ -1,61 +1,68 @@
-%section.event
-  .main
-    %h1
-      = @grouping.title
-      %span.atnd_url= link_to "ATND", @grouping.event_url
-    %h2= @grouping.catch
+-if @grouping.errors.any?
+  #error_explanation
+    %h2= "#{pluralize(@grouping.errors.count, "error")} prohibited this keyword from being saved:"
     %ul
-      %li= @grouping.started_at.strftime("%Y/%m/%d %H:%M")
-      %li= @grouping.address
-      %li.owner
-        -unless @grouping.owner_twitter_id?
-          開催者
-          = @grouping.owner_nickname 
-  .sub
-    -if @grouping.owner_twitter_id?
-      %p.owner
-        %span
-          開催者
-          = link_to "http://twitter.com/#{@grouping.owner_twitter_id}", :target => "_blank" do
-            %img{:alt => "#{@grouping.owner_twitter_id}", :src => "http://img.tweetimag.es/i/#{@grouping.owner_twitter_id}_n"}
-            = @grouping.owner_twitter_id
+      - @grouping.errors.full_messages.each do |msg|
+        %li= msg
+- else
+  %section.event
+    .main
+      %h1
+        = @grouping.title
+        %span.atnd_url= link_to "ATND", @grouping.event_url
+      %h2= @grouping.catch
+      %ul
+        %li= @grouping.started_at.strftime("%Y/%m/%d %H:%M")
+        %li= @grouping.address
+        %li.owner
+          -unless @grouping.owner_twitter_id?
+            開催者
+            = @grouping.owner_nickname 
+    .sub
+      -if @grouping.owner_twitter_id?
+        %p.owner
+          %span
+            開催者
+            = link_to "http://twitter.com/#{@grouping.owner_twitter_id}", :target => "_blank" do
+              %img{:alt => "#{@grouping.owner_twitter_id}", :src => "http://img.tweetimag.es/i/#{@grouping.owner_twitter_id}_n"}
+              = @grouping.owner_twitter_id
     
-%p.acceoted_users
-  イベントの人数
-  %span.number= @grouping.users.size
-  人 / 
-  グループの数
-  %span.number= @grouping.groupings_count
+  %p.acceoted_users
+    イベントの人数
+    %span.number= @grouping.users.size
+    人 / 
+    グループの数
+    %span.number= @grouping.groupings_count
 
-#groupings
-  - num = 0
-  - @grouping.groups.each do |group|
-    .grouping
-      - num += 1
-      %h2 Group #{num}
-      %ul.users
-        - group.users.each do |user|
-          %li.user
-            %p.icon
-              - if user.twitter_img.present? && user.twitter_img != 'null'
-                = image_tag user.twitter_img
-              - else
-                = image_tag 'no_icon.gif'
+  #groupings
+    - num = 0
+    - @grouping.groups.each do |group|
+      .grouping
+        - num += 1
+        %h2 Group #{num}
+        %ul.users
+          - group.users.each do |user|
+            %li.user
+              %p.icon
+                - if user.twitter_img.present? && user.twitter_img != 'null'
+                  = image_tag user.twitter_img
+                - else
+                  = image_tag 'no_icon.gif'
                 
-            %p.name= truncate user.nickname, :length => 15
+              %p.name= truncate user.nickname, :length => 15
   
-%script#results-json(type='text/json')
-  = raw @json
+  %script#results-json(type='text/json')
+    = raw @json
 
-- case action_name
-- when 'preview'
-  .next
-    %ul
-      %li.shuffle= link_to 'やり直す', ''
-      %li.result= link_to '確定', ''
-- when 'show'
-  .tweet
-    %a.twitter-share-button{"data-count" => "vertical", "data-lang" => "ja", :href => "https://twitter.com/share"} ツイート
-  %script{:src => "//platform.twitter.com/widgets.js", :type => "text/javascript"}
-  .retry
-    = link_to '新しくシャッフルする', root_path(:event_id => @grouping.event_id, :groupings_count => @grouping.groupings_count)
+  - case action_name
+  - when 'preview'
+    .next
+      %ul
+        %li.shuffle= link_to 'やり直す', ''
+        %li.result= link_to '確定', ''
+  - when 'show'
+    .tweet
+      %a.twitter-share-button{"data-count" => "vertical", "data-lang" => "ja", :href => "https://twitter.com/share"} ツイート
+    %script{:src => "//platform.twitter.com/widgets.js", :type => "text/javascript"}
+    .retry
+      = link_to '新しくシャッフルする', root_path(:event_id => @grouping.event_id, :groupings_count => @grouping.groupings_count)
