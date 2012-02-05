@@ -13,7 +13,7 @@ $mobile-next-button-width: 120px
 // design
 
 html
-  background: #444
+  background: url(/assets/body.gif),#4f4f4b
   font-family: sans-serif
 body
   background: url(/assets/body.gif),#4f4f4b
@@ -23,6 +23,7 @@ body
   +center-block
   +clearfix
   min-height: 800px
+  +box-shadow(0 0 10px #222)
   >div
     +clearfix
   #body
@@ -52,7 +53,7 @@ body
           background: #d3d3c7
           +border_radius(4px)
           padding: 8px 20px
-          margin: 0 0 6px 0
+          margin: 0 0 8px 0
           +box-shadow(inset #848478 0 1px 2px, #89897f 0 1px 0)
           +clearfix
           padding: 8px 20px
@@ -62,54 +63,64 @@ body
             background: #d3d3c7
           .label
             float: left
-            width: 100px
             display: block
-            height: 28px
-            @media screen and (max-device-width: 480px)
-              display: none
             label
-              text-indent: -9999px
               display: block
+              width: 110px
+              height: 28px
+              font-size: 22px
+              line-height: 28px
+              font-weight: bold
+              @media screen and (max-device-width: 480px)
+                font-size: 16px
+                width: 68px
           .input
             float: left
             input
-              background: transparent
+              background: #f9f9f9
               line-height: 18px * 1.6
-              font-size: 16px
-              width: 490px
+              font-size: 14px
+              width: 120px
               color: #666
               +border_radius(4px)
               font-weight: bold              
               +text-shadow(#e9e9da 0 1px 0)
+              padding: 0 6px    
               @media screen and (max-device-width: 480px)
-                line-height: 14px * 2
+                line-height: 14px * 1.6
                 font-size: 14px
-                width: 270px 
+                width: 50px
+                margin: 3px 0 0 -4px
+                +box-shadow(inset 0 1px 1px #999)
               &:focus
-                color: #9b1828
+                color: #222
                 background: #fff
-                +text-shadow(none)
+                +text-shadow(0)
+                +box-shadow(inset 0 1px 1px #999)
+              
             select
               font-size: 16px
               line-height: 16px * 2
-              background: transparent
               background-image: none
               +gradient("null",#d3d3c7,#d3d3c7)
               display: block
+              background-color: #fff
               margin: 2px 0 0 0
               padding: 0 4px
-              color: #666
-              font-size: 16px
+              color: #444
+              font-size: 14px
               &:focus
                 background: transparent
               @media screen and (max-device-width: 480px)
-                font-size: 14px
-                line-height: 14px * 2
-                width: 220px
-                margin: 0
+                font-size: 12px
+                line-height: 14px * 1.8
+                margin: 2px 0 0 0
                 font-weight: bold
-                background: url(/assets/select.png) no-repeat 124px center
+                padding: 0 30px 0 10px
+                background: url(/assets/select.png) no-repeat 114px center
                 -webkit-background-size: 12px 9px
+                +box-shadow(inset 0 0 5px #999)
+                
         .note
           font-size: 12px
           clear: both
@@ -120,17 +131,26 @@ body
       li.url
         p.inner
           .label
-            background: url(/assets/form_li_url.png) no-repeat center left
-            @media screen and (max-device-width: 480px)
-              -webkit-background-size: 18px 10px
-      li.groups
-        p.inner
-          .label
-            background: url(/assets/form_li_groups.png) no-repeat center left
-            @media screen and (max-device-width: 480px)
-              -webkit-background-size: 40px 10px
-          
-            
+            label
+              float: left
+              display: block
+            .atend_url
+              display: block
+              line-height: 28.8px
+              padding: 0 6px 0 0
+              font-size: 18px
+              float: left
+              color: #444
+              @media screen and (max-device-width: 480px)
+                font-size: 15px
+        .help-block
+          display: block
+          clear: both
+          color: #D3D3C7
+          text-align: right
+          font-size: 12px
+          @media screen and (max-device-width: 480px)
+            font-size: 10px           
       .commit
         text-align: center
         input
@@ -453,3 +473,13 @@ footer
       -webkit-background-size: 24px 24px
       width: 100px
       
+#error_explanation
+  h2
+    display: none
+  ul
+    li
+      display: block
+      text-align: center
+      font-size: 18px
+      color: #ee505f
+      +text-shadow(#30302b 0 1px 0)

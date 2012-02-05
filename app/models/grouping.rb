@@ -34,7 +34,7 @@ class Grouping
     pull_atnd_event_detail(self.event_id)
     pull_atnd_event_users(self.event_id)
   rescue => e
-    self.errors.add(:event_id, '不正なイベントIDです')
+    self.errors.add(:event_id, ': イベントIDに間違えがあります。')
   end
   
   # usersをシャッフルしてgroupsを返す

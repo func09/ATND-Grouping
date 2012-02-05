@@ -7,11 +7,12 @@
           %p.inner
             %span.label
               = f.label :event_id, 'URL'
-              http://atnd.org/events/
+              %span.atend_url
+                http://atnd.org/events/
             %span.input
               = f.text_field :event_id
-            %span.help-block
-              ATNDイベントIDを入力 （例：22605）
+          %p.help-block
+            ATNDイベントIDを入力 （例：22605 ※半角数字）
         %li.groups
           %p.inner
             %span.label
