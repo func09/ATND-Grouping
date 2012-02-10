@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class Grouping
   include Mongoid::Document
   
@@ -32,6 +33,8 @@ class Grouping
   def pull_atnd_event
     pull_atnd_event_detail(self.event_id)
     pull_atnd_event_users(self.event_id)
+  rescue => e
+    self.errors.add(:event_id, ': イベントIDに間違えがあります。')
   end
   
   # usersをシャッフルしてgroupsを返す
@@ -40,6 +43,7 @@ class Grouping
     groups = []
     users = self.users.dup.shuffle
     people_count = (users.size / count)
+    
     count.times do
       group = Group.new
       people_count.times do
@@ -47,6 +51,16 @@ class Grouping
       end
       groups << group
     end
+    
+    # 余った人の処理
+    # FIXME 今は余った人を適当なグループに突っ込むだけ
+    unless users.empty?
+      users.each do |user|
+        group = groups.sample
+        group.users << user
+      end
+    end
+    
     self.groups = groups
   end
   

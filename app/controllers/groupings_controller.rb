@@ -2,7 +2,8 @@ class GroupingsController < ApplicationController
   respond_to :html, :json
   def new
     @grouping = Grouping.new
-    @grouping.event_url = 'http://atnd.org/events/17223'
+    @grouping.event_id = params[:event_id].present? ? params[:event_id] : ''
+    @grouping.groupings_count = params[:groupings_count].present? ? params[:groupings_count] : nil
   end
   
   def preview
@@ -36,7 +37,6 @@ class GroupingsController < ApplicationController
   
   def create
     @grouping = Grouping.new params[:grouping]
-    p @grouping.groups
     if @grouping.save
       render :json => @grouping
     end

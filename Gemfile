@@ -6,6 +6,7 @@ gem 'rails', '3.1.2'
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
+gem 'pg'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -19,7 +20,7 @@ gem 'jquery-rails'
 gem 'haml-rails'
 gem 'mongoid'
 gem 'bson_ext'
-gem "rails-backbone"
+# gem "rails-backbone"
 gem "httparty"
 # gem "jammit", :git => 'git://github.com/documentcloud/jammit.git'
 
