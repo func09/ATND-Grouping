@@ -26,7 +26,7 @@ ATNDイベント参加者をランダムにグループ別けするツールで�
 
     $ git clone git@github.com:func09/ATND-Grouping.git
     $ cd ATND-Grouping
-    $ bundle%
+    $ bundle
     
 ### ターミナル2
 
